@@ -27,7 +27,7 @@ int main() {
         exit(1);
     }
 
-    sprintf(str, "hello world");
+    sprintf(str, "Hello world!");
 
     printf("%ld\n", key);
 
