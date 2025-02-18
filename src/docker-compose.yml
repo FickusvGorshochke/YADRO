@@ -1,0 +1,25 @@
+version: '3'
+services:
+  producer:
+    build:
+      context: .
+      dockerfile: Dockerfile.producer
+    networks:
+      - shared-net
+
+  consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile.consumer
+    networks:
+      - shared-net
+    depends_on:
+      - producer
+
+networks:
+  shared-net:
+    driver: bridge
+
+
+
+
