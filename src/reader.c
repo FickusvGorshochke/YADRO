@@ -4,37 +4,34 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-int main() {
+int main(int argc, char **argv) {
 
-    key_t key = ftok("shmfile", 65);  
-    if (key == -1) {
-        perror("ftok failed");
-        exit(1);
-    }
 
-    if (key == -1) {
-        perror("ftok");
-        exit(1);
-    }
+    
+    key_t key;
+    scanf("%ld", &key);
+    printf("key: %ld\n", &key);
+    int shmid = shmget(key, 1024, 0666);
+    printf("shmid_read: %d\n", shmid);
 
-    int shmid = shmget(key, 1024, 0666 | IPC_CREAT);
-
+    
     if (shmid == -1) {
         perror("shmget");
         exit(1);
     }
-
+    
     char *str = (char*) shmat(shmid, NULL, 0);
-
 
     if (strcmp(str, "-1")==0) {
         perror("shmat");
         exit(1);
     }
 
-    sprintf(str, "hello world");
+    printf("Data read from memory: %s\n", str);
+    shmdt(str);
+    shmctl(shmid, IPC_RMID, NULL);
 
-    printf("%ld\n", key);
 
     return 0;
 }
+
