@@ -21,13 +21,16 @@ cd YADRO/src
 ### 2. Сборка Docker-образа
 
 ```bash
-./build.sh
+chmod +x build.sh run.sh
+```
+```bash
+sudo ./build.sh
 ```
 
 ### 3. Запуск контейнера
 
 ```bash
-./run.sh
+sudo ./run.sh
 ```
 
 ## Требования
