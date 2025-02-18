@@ -15,7 +15,7 @@
 
 ```bash
 git clone https://github.com/FickusvGorshochke/YADRO
-cd src
+cd YADRO/src
 ```
 
 ### 2. Сборка Docker-образа
