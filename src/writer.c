@@ -5,6 +5,13 @@
 #include <sys/shm.h>
 
 int main() {
+
+    FILE *file = fopen("shmfile", "w");
+    if (file == NULL) {
+        perror("fopen failed");
+        exit(1);
+    }
+    fclose(file);
     
     key_t key = ftok("shmfile", 65);
 
